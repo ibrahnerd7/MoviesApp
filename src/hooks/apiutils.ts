@@ -91,7 +91,7 @@ const getGenresName = (genreIds: Array<number>) => {
   genreIds.forEach(genreId => {
     genreArray.push(genres.find(genre => genre?.id === genreId)?.name);
   });
-  return genreArray;
+  return genreArray.join(' / ');
 };
 
 export {buildUrl, getGenresName};
