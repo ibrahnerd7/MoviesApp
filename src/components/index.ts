@@ -71,10 +71,11 @@ export const RateBar = styled.View`
   margin-top: 16px;
   height: 24px;
   border-radius: 4px;
+  width: 160px;
 `;
 
 export const RateStar = styled.View`
-  margin: 6px;
+  margin: 4px;
 `;
 
 export const SearchButton = styled.TouchableOpacity`
