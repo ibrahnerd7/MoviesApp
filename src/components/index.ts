@@ -81,10 +81,49 @@ export const SearchButton = styled.TouchableOpacity`
   margin-top: 12px;
 `;
 
+export const BackButton = styled.TouchableOpacity`
+  margin-top: 12px;
+  margin-start: 20px;
+`;
+
 export const RateText = styled.Text`
   color: #cdced1;
   font-weight: 400;
   font-size: 12px;
   margin-top: 4px;
   margin-start: 8px;
+`;
+
+export const MovieDetailOverlay = styled.View`
+  background-color: #000000c0;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+`;
+
+export const MovieDetailSubText = styled.Text`
+  margin-top: 8px;
+  font-size: 12px;
+  color: #cdced1;
+  font-weight: 400;
+`;
+
+export const MovieDetailText = styled.Text`
+  margin-top: 16px;
+  font-size: 12px;
+  color: #ffffff;
+  font-size: 14px;
+`;
+
+export const MovieDetailContent = styled.View`
+  margin-top: 116px;
+  margin-start: 24px;
+  margin-end: 16px;
+`;
+
+export const SubHeading = styled.Text`
+  margin-top: 48px;
+  font-size: 24px;
+  color: #ffffff;
+  margin-end: 16px;
 `;
