@@ -1,12 +1,21 @@
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {SafeAreaView, ScrollView, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
+import {QueryClient, QueryClientProvider} from 'react-query';
+import Main from './navigation/Main';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <StatusBar />
-      <ScrollView contentInsetAdjustmentBehavior="automatic" />
-    </SafeAreaView>
+    <React.Fragment>
+      <StatusBar barStyle="default" />
+      <NavigationContainer>
+        <QueryClientProvider client={queryClient}>
+          <Main />
+        </QueryClientProvider>
+      </NavigationContainer>
+    </React.Fragment>
   );
 };
 
