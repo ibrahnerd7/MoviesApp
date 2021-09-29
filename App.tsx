@@ -2,7 +2,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {QueryClient, QueryClientProvider} from 'react-query';
-import Main from './navigation/Main';
+import Main from './src/navigation/Main';
 
 const queryClient = new QueryClient();
 
