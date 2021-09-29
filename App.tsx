@@ -9,7 +9,7 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     <React.Fragment>
-      <StatusBar barStyle="default" />
+      <StatusBar translucent backgroundColor="transparent" />
       <NavigationContainer>
         <QueryClientProvider client={queryClient}>
           <Main />
