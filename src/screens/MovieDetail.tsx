@@ -23,6 +23,7 @@ import {
   RateText,
   SubHeading,
 } from '../components';
+import {getGenresName} from '../hooks/apiutils';
 import useMovie from '../hooks/useMovie';
 
 const MovieDetail = ({navigation, route}) => {
@@ -36,9 +37,7 @@ const MovieDetail = ({navigation, route}) => {
     movie => movie.id !== movieId,
   );
 
-  const genres= data?.genres
-  .map(genre => genre.name)
-  .join(' / ');
+  const genres = data?.genres.map(genre => genre.name).join(' / ');
 
   let rating = Math.floor((data?.vote_average * 5) / 10);
 
@@ -99,7 +98,9 @@ const MovieDetail = ({navigation, route}) => {
                       />
                       <CardContent>
                         <CardTitle numberOfLines={3}>{item.title}</CardTitle>
-                        <CardText numberOfLines={1}>Fantasy/Action</CardText>
+                        <CardText numberOfLines={1}>
+                          {getGenresName(item.genre_ids).join(' / ')}
+                        </CardText>
                         <CardText numberOfLines={1}>
                           {new Date(item.release_date).getFullYear()}
                         </CardText>
@@ -146,9 +147,9 @@ const MovieDetail = ({navigation, route}) => {
                   </TouchableOpacity>
                 )}
                 showsVerticalScrollIndicator={false}
-                ListFooterComponent={<Footer />}
               />
             </MovieDetailContent>
+            <Footer />
           </MovieDetailOverlay>
         </ImageBackground>
       )}

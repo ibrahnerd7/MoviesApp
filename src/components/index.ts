@@ -58,6 +58,8 @@ export const CardText = styled.Text`
   font-size: 12px;
   color: #cdced1;
   margin-top: 6px;
+  margin-right: 16px;
+  flex: 1;
 `;
 
 export const Footer = styled.View`
@@ -72,6 +74,7 @@ export const RateBar = styled.View`
   height: 24px;
   border-radius: 4px;
   width: 160px;
+  margin-bottom: 16px;
 `;
 
 export const RateStar = styled.View`

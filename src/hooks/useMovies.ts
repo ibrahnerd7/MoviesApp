@@ -1,6 +1,6 @@
 import {useQuery} from 'react-query';
 import axios from 'axios';
-import buildUrl from './apiutils';
+import {buildUrl} from './apiutils';
 import {MoviesResult} from '@types';
 
 const fetchMovies = async () => {

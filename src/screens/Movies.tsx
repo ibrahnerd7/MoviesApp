@@ -17,6 +17,7 @@ import {
   RateText,
   SearchButton,
 } from '../components';
+import {getGenresName} from '../hooks/apiutils';
 
 import useMovies from '../hooks/useMovies';
 
@@ -50,7 +51,9 @@ const Movies: React.FC = ({navigation}) => {
                   />
                   <CardContent>
                     <CardTitle numberOfLines={3}>{item.title}</CardTitle>
-                    <CardText numberOfLines={1}>Fantasy/Action</CardText>
+                    <CardText numberOfLines={1}>
+                      {getGenresName(item.genre_ids).join(' / ')}
+                    </CardText>
                     <CardText numberOfLines={1}>
                       {new Date(item.release_date).getFullYear()}
                     </CardText>
