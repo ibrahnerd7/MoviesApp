@@ -1,46 +1,43 @@
 import {MoviesResult} from '@types';
 import React from 'react';
-import {ActivityIndicator, ImageBackground, StyleSheet} from 'react-native';
-import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
+import {
+  ActivityIndicator,
+  ImageBackground,
+  StyleSheet,
+  Text,
+} from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {QueryCache, useQueryClient} from 'react-query';
+import {useQueryClient} from 'react-query';
 import {
   BackButton,
-  CardContent,
-  CardImage,
-  CardText,
-  CardTitle,
   Footer,
   Header,
   Heading,
-  MovieCard,
   MovieDetailContent,
   MovieDetailOverlay,
   MovieDetailSubText,
   MovieDetailText,
-  RateBar,
-  RateStar,
-  RateText,
   SubHeading,
 } from '../components';
-import {getGenresName} from '../hooks/apiutils';
 import useMovie from '../hooks/useMovie';
 import MovieItem from '../components/MovieItem';
 import Ratings from '../components/Ratings';
+import useMovies from '../hooks/useMovies';
 
 const MovieDetail = ({navigation, route}) => {
   const {movieId} = route && route.params;
-  const {data, isSuccess, isLoading} = useMovie(movieId);
+  const {data, isSuccess, isLoading, error} = useMovie(movieId);
 
-  const queryClient = useQueryClient();
-  const query = queryClient.getQueryCache().find('movies');
-  let cachedMoviesResults: MoviesResult = query?.state.data;
-  let cachedMovies = cachedMoviesResults.results.filter(
-    movie => movie.id !== movieId,
-  );
+  const {
+    data: moviesData,
+    isLoadingMovies,
+    isSuccessMovies,
+    errorMovies,
+  } = useMovies();
+  let movies = moviesData?.results?.filter(movie => movie.id !== movieId);
 
   const genres = data?.genres.map(genre => genre.name).join(' / ');
-
 
   return (
     <>
@@ -67,7 +64,7 @@ const MovieDetail = ({navigation, route}) => {
               <Ratings vote_average={data?.vote_average} />
               <SubHeading>Also trending</SubHeading>
               <FlatList
-                data={cachedMovies}
+                data={movies}
                 renderItem={({item}) => (
                   <MovieItem
                     movieItem={item}
@@ -77,12 +74,15 @@ const MovieDetail = ({navigation, route}) => {
                   />
                 )}
                 showsVerticalScrollIndicator={false}
+                onScrollBeginDrag={() => console.log('Hide header')}
               />
             </MovieDetailContent>
             <Footer />
           </MovieDetailOverlay>
         </ImageBackground>
       )}
+
+      {error && <Text>{`Failed to fetch movies : ${error?.message}`}</Text>}
     </>
   );
 };

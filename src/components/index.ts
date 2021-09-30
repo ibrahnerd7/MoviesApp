@@ -36,7 +36,8 @@ export const MovieCard = styled.View`
 export const CardImage = styled.Image`
   width: 118px;
   height: 168px;
-  border-radius: 16px;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
 `;
 
 export const CardContent = styled.View`
@@ -57,9 +58,10 @@ export const CardText = styled.Text`
   font-weight: 400;
   font-size: 12px;
   color: #cdced1;
-  margin-top: 6px;
+  margin-top: 3px;
   margin-right: 16px;
   flex: 1;
+  width: 210px;
 `;
 
 export const Footer = styled.View`
