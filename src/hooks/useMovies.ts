@@ -8,5 +8,6 @@ const fetchMovies = async () => {
   return data;
 };
 
-const useMovies = () => useQuery<MoviesResult, Error>('movies', fetchMovies);
+const useMovies = () =>
+  useQuery<MoviesResult, Error>('moviesInDetail', fetchMovies);
 export default useMovies;
