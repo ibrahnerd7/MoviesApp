@@ -1,19 +1,14 @@
-import {MoviesResult} from '@types';
 import React from 'react';
-import {
-  ActivityIndicator,
-  ImageBackground,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import {ImageBackground, StyleSheet, Text} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {useQueryClient} from 'react-query';
 import {
   BackButton,
+  Container,
   Footer,
   Header,
   Heading,
+  LoadingIndicator,
   MovieDetailContent,
   MovieDetailOverlay,
   MovieDetailSubText,
@@ -29,19 +24,14 @@ const MovieDetail = ({navigation, route}) => {
   const {movieId} = route && route.params;
   const {data, isSuccess, isLoading, error} = useMovie(movieId);
 
-  const {
-    data: moviesData,
-    isLoadingMovies,
-    isSuccessMovies,
-    errorMovies,
-  } = useMovies();
+  const {data: moviesData} = useMovies();
   let movies = moviesData?.results?.filter(movie => movie.id !== movieId);
 
   const genres = data?.genres.map(genre => genre.name).join(' / ');
 
   return (
-    <>
-      {isLoading && <ActivityIndicator />}
+    <Container>
+      {isLoading && <LoadingIndicator />}
 
       {isSuccess && (
         <ImageBackground
@@ -83,7 +73,7 @@ const MovieDetail = ({navigation, route}) => {
       )}
 
       {error && <Text>{`Failed to fetch movies : ${error?.message}`}</Text>}
-    </>
+    </Container>
   );
 };
 

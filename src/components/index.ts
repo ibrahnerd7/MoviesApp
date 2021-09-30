@@ -133,3 +133,8 @@ export const SubHeading = styled.Text`
   color: #ffffff;
   margin-end: 16px;
 `;
+
+export const LoadingIndicator = styled.ActivityIndicator`
+  height: 32px;
+  margin-top: 64px;
+`;
