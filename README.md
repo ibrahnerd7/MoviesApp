@@ -1,4 +1,4 @@
-# MoviesApp
+# MoviesApp [![Build status](https://build.appcenter.ms/v0.1/apps/f5a32e23-f331-4297-bb45-53d92dbf0050/branches/dev/badge)](https://appcenter.ms)
 MoviesApp is a two page app that allows any users to view a list of movies From the <a href="https://developers.themoviedb.org/3">Movie DB API</a>.
 - <a href="https://i.diawi.com/MpBBfj">Android apk</a>
 - <a href="https://streamable.com/twyjvs"> Screencast</a>
