@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MoviesApp</string>
+    <string 
+        name="appCenterCrashes_whenToSendCrashes" 
+        moduleConfig="true"
+        translatabe="false">ALWAYS_SEND</string>
+    <string 
+        name="appCenterAnalytics_whenToEnableAnalytics" 
+        moduleConfig="true"
+        translatabe="false">ALWAYS_SEND</string>
 </resources>
